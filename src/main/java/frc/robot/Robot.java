@@ -7,14 +7,12 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -31,6 +29,7 @@ public class Robot extends TimedRobot {
    */
   private TalonSRX ShooterMaster = new TalonSRX(1);
   private VictorSPX ShooterSlave = new VictorSPX(1);
+  private double power;
 
   @Override 
   public void robotInit() {
@@ -42,7 +41,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    SmartDashboard.getNumber("Shooter Power", 0);
+    power = SmartDashboard.getNumber("Shooter Power", 0);
   }
 
   @Override
@@ -56,11 +55,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     enableMotors(true);
-
   }
 
   @Override
   public void teleopPeriodic() {
+    ShooterMaster.set
   }
 
   @Override
