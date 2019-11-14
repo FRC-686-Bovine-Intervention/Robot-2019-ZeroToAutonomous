@@ -7,10 +7,13 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.ParamEnum;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -28,15 +31,13 @@ public class Robot extends TimedRobot {
    * for any initialization code.
    */
   private TalonSRX ShooterMaster = new TalonSRX(1);
-  private VictorSPX ShooterSlave = new VictorSPX(1);
   private double power;
 
   @Override 
   public void robotInit() {
     ShooterMaster.setInverted(true);
-    ShooterSlave.follow(ShooterMaster);
-    ShooterSlave.setInverted(InvertType.FollowMaster);
     enableMotors(false);
+
   }
 
   @Override
@@ -84,7 +85,6 @@ public class Robot extends TimedRobot {
     }
 
       ShooterMaster.setNeutralMode(mode);
-      ShooterSlave.setNeutralMode(mode);
 
   
   }
